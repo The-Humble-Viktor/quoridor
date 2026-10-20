@@ -1,3 +1,4 @@
+import copy
 
 class Model(object):
     def __init__(self, board_height, board_width):
@@ -17,12 +18,18 @@ class Model(object):
     def get_walls(self):
         return (self.horizontal_walls, self.vertical_walls)
 
-    def validate_move(x,y) -> bool:
+    def validate_move(self,x,y) -> bool:
         #compare existing pos to new, check if walls inbetween
         pass
 
-    def validate_horizontal_wall(new_horizontal_walls) -> bool:
-        pass
+    def validate_horizontal_wall(self,wall_coordinates: tuple) -> bool:
+        new_horizontal_walls = copy.deepcopy(self.horizontal_walls)
+        x, y = wall_coordinates
+        new_horizontal_walls[x][y] = True
+        new_horizontal_walls[x+1][y] = True
 
-    def validate_vertical_wall(new_vertical_walls) -> bool:
-        pass
+    def validate_vertical_wall(self,wall_coordinates: tuple) -> bool:
+        new_vertical_walls = copy.deepcopy(self.vertical_walls)
+        x, y = wall_coordinates
+        new_vertical_walls[x][y] = True
+        new_vertical_walls[x][y+1] = True

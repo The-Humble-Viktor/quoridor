@@ -1,5 +1,5 @@
-from view_2 import TerminalView as View
-from model_2 import Model as Game
+from view import TerminalView as View
+from model import Model as Game
 
 def main():
     game = Game(5,8)
